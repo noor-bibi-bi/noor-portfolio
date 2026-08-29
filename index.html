@@ -23,7 +23,10 @@
   <!-- Canvas Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
-  <link rel="stylesheet" href="style.css?v=8.0">
+  <!-- PDF.js Universal HTML5 PDF Renderer -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+  <link rel="stylesheet" href="style.css?v=9.0">
 </head>
 <body>
 
@@ -1315,12 +1318,12 @@ Available Commands:
           </button>
         </div>
       </div>
-      <div class="modal-body modal-pdf-body">
-        <object data="Noor_CV.pdf" type="application/pdf" class="pdf-iframe">
-          <iframe src="Noor_CV.pdf" class="pdf-iframe" title="Noor Bibi CV Preview">
-            <p style="padding: 20px; color: #fff;">Your browser does not support inline PDF viewing. <a href="Noor_CV.pdf" target="_blank" style="color: #e0ddcf; text-decoration: underline;">Click here to download Noor Bibi's CV (PDF)</a>.</p>
-          </iframe>
-        </object>
+      <div class="modal-body modal-pdf-body" id="pdf-viewer-container" style="overflow-y: auto; text-align: center; padding: 20px; background: #1a121b; min-height: 480px;">
+        <div id="pdf-loading-spinner" style="padding: 60px 20px; color: #e0ddcf; font-family: var(--font-mono); font-size: 0.9rem;">
+          <p>Loading Curriculum Vitae Preview...</p>
+          <p style="margin-top: 14px;"><a href="Noor_CV.pdf" target="_blank" download="Noor_Bibi_CV.pdf" class="btn btn-primary" style="font-size: 0.85rem;">Click to Download / View Directly</a></p>
+        </div>
+        <div id="pdf-pages-container" style="display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%;"></div>
       </div>
     </div>
   </div>

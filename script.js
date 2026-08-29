@@ -756,7 +756,7 @@ function initProjectModals() {
 }
 
 /* ==========================================================================
-   10. RESUME PDF MODAL VIEWER
+   10. RESUME PDF MODAL VIEWER (PDF.JS UNIVERSAL HTML5 CANVAS RENDERER)
    ========================================================================== */
 function initResumeModal() {
   const modal = document.getElementById('resume-modal');
@@ -769,10 +769,79 @@ function initResumeModal() {
 
   if (!modal) return;
 
+  let pdfRendered = false;
+
+  function loadAndRenderPdf() {
+    if (pdfRendered) return;
+    const container = document.getElementById('pdf-pages-container');
+    const spinner = document.getElementById('pdf-loading-spinner');
+    if (!container) return;
+
+    if (!window.pdfjsLib) {
+      if (spinner) {
+        spinner.innerHTML = `
+          <p style="color: #f1f0ea; margin-bottom: 14px;">Curriculum Vitae — Noor Bibi</p>
+          <a href="Noor_CV.pdf" target="_blank" download="Noor_Bibi_CV.pdf" class="btn btn-primary">
+            Download / View PDF File
+          </a>
+        `;
+      }
+      return;
+    }
+
+    try {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+      pdfjsLib.getDocument('Noor_CV.pdf').promise.then(pdf => {
+        pdfRendered = true;
+        if (spinner) spinner.style.display = 'none';
+        
+        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+          pdf.getPage(pageNum).then(page => {
+            const scale = window.innerWidth < 768 ? 1.0 : 1.45;
+            const viewport = page.getViewport({ scale: scale });
+            const canvas = document.createElement('canvas');
+            canvas.style.maxWidth = '100%';
+            canvas.style.height = 'auto';
+            canvas.style.borderRadius = '8px';
+            canvas.style.boxShadow = '0 12px 35px rgba(0, 0, 0, 0.7)';
+            canvas.style.background = '#ffffff';
+            canvas.style.display = 'block';
+
+            const context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            container.appendChild(canvas);
+
+            const renderContext = {
+              canvasContext: context,
+              viewport: viewport
+            };
+            page.render(renderContext);
+          });
+        }
+      }).catch(err => {
+        console.error('PDF.js render error:', err);
+        if (spinner) {
+          spinner.innerHTML = `
+            <p style="color: #f1f0ea; margin-bottom: 14px;">Curriculum Vitae — Noor Bibi (PDF)</p>
+            <a href="Noor_CV.pdf" target="_blank" download="Noor_Bibi_CV.pdf" class="btn btn-primary">
+              Download / View PDF Directly
+            </a>
+          `;
+        }
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   window.openResumeModal = function() {
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
     triggerConfetti();
+    loadAndRenderPdf();
   };
 
   function closeModal() {
