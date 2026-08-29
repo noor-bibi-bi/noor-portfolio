@@ -4,15 +4,11 @@ node_modules/
 .vercel
 *.log
 
-# Personal Profile Images
-*.jpeg
-*.jpg
-*.png
+# Keep other raw images ignored if needed
 Professional-pfp.jpeg
 Noor-pfp-cutout.png
 Noor-pfp-portrait.png
-Noor-pfp-bust.png
 
-# PDF CV Documents
+# Keep PDF CV ignored
 *.pdf
 Noor_CV.pdf
