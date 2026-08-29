@@ -4,11 +4,7 @@ node_modules/
 .vercel
 *.log
 
-# Keep other raw images ignored if needed
+# Keep unused raw images ignored if needed
 Professional-pfp.jpeg
 Noor-pfp-cutout.png
 Noor-pfp-portrait.png
-
-# Keep PDF CV ignored
-*.pdf
-Noor_CV.pdf
