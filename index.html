@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noor Bibi | AI/ML Engineer & Mobile Developer</title>
+  <meta name="description" content="Portfolio of Noor Bibi — AI/ML Engineer and Mobile Application Developer specializing in RAG architectures, Computer Vision, Flutter, and Scalable Backend Systems.">
+  <meta property="og:title" content="Noor Bibi | AI/ML Engineer & Mobile Developer">
+  <meta property="og:description" content="Explore Clinical RAG Systems, AI Computer Vision, Flutter Apps, and Microservices by Noor Bibi.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Space Grotesk, Instrument Serif, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Three.js for 3D Interactive WebGL -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="style.css?v=7.0">
+</head>
+<body>
+
+  <!-- Ambient Dynamic Lighting & Glow -->
+  <div class="ambient-glow" id="ambient-glow"></div>
+  <div class="ambient-mesh"></div>
+
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="custom-cursor"></div>
+  <div class="cursor-dot" id="cursor-dot"></div>
+
+  <!-- FLOATING NAVBAR HUD -->
+  <header class="navbar-container">
+    <nav class="nav-hud glass-panel">
+      <a href="#hero" class="nav-logo">
+        <div class="logo-circle">
+          <span>NB</span>
+          <div class="logo-pulse"></div>
+        </div>
+        <div class="logo-text">
+          <span class="name">Noor Bibi</span>
+          <span class="role-tag" id="nav-role-tag">AI/ML & Mobile Engineer</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#telemetry" class="nav-link">Telemetry</a></li>
+        <li><a href="#integrations" class="nav-link">Ecosystem</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#blueprint" class="nav-link">Architecture</a></li>
+        <li><a href="#journey" class="nav-link">Journey</a></li>
+        <li><a href="#terminal" class="nav-link">Terminal</a></li>
+      </ul>
+
+      <div class="nav-social-icons">
+        <a href="https://github.com/noor-bibi-bi" target="_blank" rel="noopener noreferrer" class="nav-icon-link" title="GitHub Profile" aria-label="GitHub Profile">
+          <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/noor-bibi-a75263282" target="_blank" rel="noopener noreferrer" class="nav-icon-link" title="LinkedIn Profile" aria-label="LinkedIn Profile">
+          <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn-nav-resume" id="open-resume-btn">
+          <i data-lucide="file-text"></i>
+          <span>Resume CV</span>
+        </button>
+        <a href="#contact" class="btn-nav-contact">
+          <i data-lucide="send"></i>
+          <span>Contact</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+        <i data-lucide="menu" id="toggle-icon"></i>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile Dropdown Navigation -->
+  <div class="mobile-menu glass-panel" id="mobile-menu">
+    <a href="#telemetry" class="mobile-nav-link">Telemetry Benchmarks</a>
+    <a href="#integrations" class="mobile-nav-link">Ecosystem & Integrations</a>
+    <a href="#projects" class="mobile-nav-link">Featured Projects</a>
+    <a href="#blueprint" class="mobile-nav-link">Architecture Blueprint</a>
+    <a href="#journey" class="mobile-nav-link">Experience Journey</a>
+    <a href="#terminal" class="mobile-nav-link">Terminal & Playground</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+    <div class="mobile-socials">
+      <a href="https://github.com/noor-bibi-bi" target="_blank" rel="noopener noreferrer" class="mobile-social-link">
+        <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+        </svg>
+        <span>GitHub</span>
+      </a>
+      <a href="https://www.linkedin.com/in/noor-bibi-a75263282" target="_blank" rel="noopener noreferrer" class="mobile-social-link">
+        <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+          <rect x="2" y="9" width="4" height="12"></rect>
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+        <span>LinkedIn</span>
+      </a>
+    </div>
+    <div class="mobile-actions">
+      <button class="btn btn-glass-sm w-full" id="mobile-resume-btn">
+        <i data-lucide="file-text"></i>
+        <span>View Resume (PDF)</span>
+      </button>
+    </div>
+  </div>
+
+  <main>
+    <!-- SECTION 1: EDITORIAL HERO (PROMINENT CUTOUT & CENTERED FLOW) -->
+    <section id="hero" class="hero-section hero-editorial-stage">
+      <canvas id="hero-canvas"></canvas>
+
+      <div class="container hero-editorial-container">
+        <!-- Huge Impact Headline -->
+        <div class="hero-editorial-headline-wrap">
+          <h1 class="hero-main-title">
+            <span class="title-sans">Hi I'm Noor</span>
+            <span class="title-serif">AI/ML Engineer <span class="ampersand">&</span> Mobile Developer</span>
+          </h1>
+        </div>
+
+        <!-- Enlarged Close-up Bust Cutout Stage (Deep Headline Overlap) -->
+        <div class="hero-cutout-stage-center" style="margin-top: -190px; position: relative; z-index: 3;">
+          <div class="cutout-aura-glow"></div>
+          <div class="hero-cutout-frame-large" style="width: 540px; max-width: 92vw;">
+            <img src="Noor-pfp-bust.png" alt="Noor Bibi" class="hero-cutout-img-lg" id="profile-cutout-img" style="width: 100%; max-height: 520px; object-fit: contain;">
+          </div>
+        </div>
+
+        <!-- Introductory Paragraph (Cleanly Positioned Below Portrait) -->
+        <div class="hero-bottom-content-block">
+          <p class="hero-intro-paragraph">
+            Hi, I’m Noor, a Computer Science graduate focused on Software Engineering, Artificial Intelligence, and Mobile Application Development. I build practical solutions ranging from RAG-based AI systems and computer vision applications to Flutter mobile apps. With experience in teaching, mentoring, and student leadership, I bring a strong mix of technical, problem-solving, and collaboration skills.
+          </p>
+
+          <div class="hero-actions-row">
+            <a href="#projects" class="btn btn-primary magnetic-btn">
+              <span>View Production Systems</span>
+              <i data-lucide="arrow-right"></i>
+            </a>
+            <button class="btn btn-glass magnetic-btn" id="hero-cv-btn">
+              <i data-lucide="download"></i>
+              <span>Download CV</span>
+            </button>
+          </div>
+
+          <!-- Quick Connect Chips -->
+          <div class="hero-quick-chips">
+            <a href="https://github.com/noor-bibi-bi" target="_blank" rel="noopener noreferrer" class="quick-chip chip-git">
+              <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/noor-bibi-a75263282" target="_blank" rel="noopener noreferrer" class="quick-chip chip-in">
+              <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+            <button class="quick-chip chip-copy" data-copy="noorbibi803@gmail.com" title="Copy Email">
+              <i data-lucide="mail"></i>
+              <span>noorbibi803@gmail.com</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: 2-ROW DUAL MARQUEE TICKER (SS 3 DIVIDED INTO 2 LINES) -->
+    <div class="dual-marquee-container section-divider-glow">
+      <!-- Line 1: AI, LLMs & Mobile Competencies (Scrolls Left) -->
+      <div class="marquee-row marquee-row-1">
+        <div class="marquee-track track-left">
+          <div class="marquee-content">
+            <span class="marquee-item tag-coral"><i data-lucide="brain-circuit"></i> Retrieval-Augmented Generation (RAG)</span>
+            <span class="marquee-dot">•</span>
+            <span class="marquee-item tag-amber"><i data-lucide="smartphone"></i> Flutter & Dart Mobile Apps</span>
+            <span class="marquee-dot">•</span>
+            <span class="marquee-item tag-sage"><i data-lucide="camera"></i> Computer Vision (12-Season ML)</span>
+            <span class="marquee-dot">•</span>
+            <span class="marquee-item tag-coral"><i data-lucide="database"></i> ChromaDB Vector Indexing</span>
+            <span class="marquee-dot">•</span>
+            <span class="marquee-item tag-amber"><i data-lucide="shield-check"></i> Zero Hallucination Validation</span>
+            <span class="marquee-dot">•</span>
+          </div>
+          <div class="marquee-content" aria-hidden="true">
+            <span class="marquee-item tag-coral"><i data-lucide="brain-circuit"></i> Retrieval-Augmented Generation (RAG)</span>
+            <span class="marquee-dot">•</span>
+            <span class="marquee-item tag-amber"><i data-lucide="smartphone"></i> Flutter & Dart Mobile Apps</span>
+            <span class="marquee-dot">•</span>
+            <span class="marquee-item tag-sage"><i data-lucide="camera"></i> Computer Vision (12-Season ML)</span>
+            <span class="marquee-dot">•</span>
+            <span class="marquee-item tag-coral"><i data-lucide="database"></i> ChromaDB Vector Indexing</span>
+            <span class="marquee-dot">•</span>
+            <span class="marquee-item tag-amber"><i data-lucide="shield-check"></i> Zero Hallucination Validation</span>
+            <span class="marquee-dot">•</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Line 2: Backend, Cloud, DevOps & Distributed Systems (Scrolls Right) -->
+      <div class="marquee-row marquee-row-2">
+        <div class="marquee-track track-right">
+          <div class="marquee-content">
+            <span class="marquee-item tag-sage"><i data-lucide="server"></i> FastAPI & Python Async Inference</span>
+            <span class="marquee-dot">•</span>
+            <span class="marquee-item tag-coral"><i data-lucide="container"></i> Docker & Kubernetes CI/CD</span>
+            <span class="marquee-dot">•</span>
+            <span class="marquee-item tag-amber"><i data-lucide="layers"></i> PyTorch Deep Learning Models</span>
+            <span class="marquee-dot">•</span>
+            <span class="marquee-item tag-sage"><i data-lucide="database"></i> PostgreSQL & SQLAlchemy ORM</span>
+            <span class="marquee-dot">•</span>
+            <span class="marquee-item tag-coral"><i data-lucide="cloud"></i> GCP, Azure & Microservices</span>
+            <span class="marquee-dot">•</span>
+          </div>
+          <div class="marquee-content" aria-hidden="true">
+            <span class="marquee-item tag-sage"><i data-lucide="server"></i> FastAPI & Python Async Inference</span>
+            <span class="marquee-dot">•</span>
+            <span class="marquee-item tag-coral"><i data-lucide="container"></i> Docker & Kubernetes CI/CD</span>
+            <span class="marquee-dot">•</span>
+            <span class="marquee-item tag-amber"><i data-lucide="layers"></i> PyTorch Deep Learning Models</span>
+            <span class="marquee-dot">•</span>
+            <span class="marquee-item tag-sage"><i data-lucide="database"></i> PostgreSQL & SQLAlchemy ORM</span>
+            <span class="marquee-dot">•</span>
+            <span class="marquee-item tag-coral"><i data-lucide="cloud"></i> GCP, Azure & Microservices</span>
+            <span class="marquee-dot">•</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: PROMINENT TELEMETRY & MULTI-ACCENT BENCHMARKS HUD (SS 4 PROMINENCE) -->
+    <section id="telemetry" class="telemetry-section section-tight reveal-on-scroll">
+      <div class="container">
+        <div class="section-tag tag-sage"><i data-lucide="activity"></i> Verified Performance Metrics</div>
+        
+        <div class="telemetry-hud-container glass-panel spotlight-card">
+          <!-- Top Telemetry Status Header -->
+          <div class="telemetry-top-bar">
+            <div class="telemetry-status-box">
+              <span class="pulse-coral"></span>
+              <span class="telemetry-status-text">PRODUCTION SYSTEM BENCHMARKS</span>
+            </div>
+            <div class="telemetry-meta-code">
+              <span>LATENCY: &lt;140ms</span>
+              <span class="sep">|</span>
+              <span>RAG ACCURACY: 100% (25/25)</span>
+              <span class="sep">|</span>
+              <span>CLUSTER: ACTIVE</span>
+            </div>
+          </div>
+
+          <!-- Bold, Prominent Bento Telemetry Grid -->
+          <div class="telemetry-grid">
+            <!-- Widget 1: Clinical RAG Accuracy (Coral Highlight) -->
+            <div class="telemetry-widget widget-accuracy card-tone-coral">
+              <div class="widget-head">
+                <span class="widget-label"><i data-lucide="shield-check" class="icon-coral"></i> Clinical RAG Accuracy</span>
+                <span class="badge-tag tag-coral">25/25 Verified</span>
+              </div>
+              <div class="widget-number-display">
+                <span class="stat-num counter" data-target="100">0</span><span class="stat-unit">%</span>
+              </div>
+              <!-- Animated SVG Waveform Graph -->
+              <div class="live-waveform-wrapper">
+                <svg class="telemetry-waveform-svg" viewBox="0 0 280 60" fill="none">
+                  <path class="waveform-grid-lines" d="M0 15H280M0 30H280M0 45H280" stroke="rgba(201,203,163,0.15)" stroke-dasharray="2 2"/>
+                  <path class="waveform-pulse-line-coral" d="M0 30 Q20 30 35 15 T65 45 T95 10 T125 50 T155 20 T185 40 T215 15 T245 35 T280 30" stroke="#e26d5c" stroke-width="2.5" fill="none"/>
+                  <circle cx="215" cy="15" r="4.5" fill="#ffe1a8" class="pulsing-wave-node-coral"/>
+                </svg>
+              </div>
+              <p class="widget-footnote">Dual-layer semantic validation filtering eliminating clinical hallucinations.</p>
+              <a href="https://medassist-rag-two.vercel.app/" target="_blank" rel="noopener noreferrer" class="telemetry-action-link link-coral">
+                <span>Launch Live MedAssist App</span> <i data-lucide="external-link"></i>
+              </a>
+            </div>
+
+            <!-- Widget 2: 12-Season CV Model (Amber Tone) -->
+            <div class="telemetry-widget widget-cv card-tone-amber">
+              <div class="widget-head">
+                <span class="widget-label"><i data-lucide="camera" class="icon-amber"></i> Computer Vision Model</span>
+                <span class="badge-tag tag-amber">Real-Time</span>
+              </div>
+              <div class="widget-number-display">
+                <span class="stat-num counter" data-target="12">0</span><span class="stat-unit">-Season</span>
+              </div>
+              <div class="undertone-matrix-mini">
+                <div class="matrix-chip chip-spring">Warm Spring</div>
+                <div class="matrix-chip chip-summer">Cool Summer</div>
+                <div class="matrix-chip chip-autumn">Deep Autumn</div>
+                <div class="matrix-chip chip-winter">Clear Winter</div>
+              </div>
+              <p class="widget-footnote">Facial undertone classification trained on portrait dataset in Atelier Flutter app.</p>
+            </div>
+
+            <!-- Widget 3: Container Orchestration (Sage/Olive Tone) -->
+            <div class="telemetry-widget widget-pipeline card-tone-sage">
+              <div class="widget-head">
+                <span class="widget-label"><i data-lucide="container" class="icon-sage"></i> Container Orchestration</span>
+                <span class="badge-tag tag-sage">Automated</span>
+              </div>
+              <div class="widget-number-display">
+                <span class="stat-num">3</span><span class="stat-unit">-Tier</span>
+              </div>
+              <div class="telemetry-pipeline-steps">
+                <div class="pipe-step step-sage"><i data-lucide="check"></i> Git Commit Trigger</div>
+                <div class="pipe-step step-sage"><i data-lucide="check"></i> Automated Security Scan</div>
+                <div class="pipe-step step-sage"><i data-lucide="check"></i> Docker Build & Tag</div>
+                <div class="pipe-step step-sage"><i data-lucide="check"></i> Kubernetes Deployment</div>
+              </div>
+              <p class="widget-footnote">Resilient cloud microservices with GitHub Actions CI/CD workflows.</p>
+            </div>
+
+            <!-- Widget 4: Leadership & Mentorship (Crimson Tone) -->
+            <div class="telemetry-widget widget-leadership card-tone-crimson">
+              <div class="widget-head">
+                <span class="widget-label"><i data-lucide="users" class="icon-crimson"></i> Engineering Leadership</span>
+                <span class="badge-tag tag-crimson">Active</span>
+              </div>
+              <div class="widget-number-display">
+                <span class="stat-num counter" data-target="60">0</span><span class="stat-unit">+</span>
+              </div>
+              <div class="leadership-badges-strip">
+                <span class="lead-badge badge-crimson"><i data-lucide="award"></i> SciTech President</span>
+                <span class="lead-badge badge-crimson"><i data-lucide="book-open"></i> RISE Instructor</span>
+                <span class="lead-badge badge-crimson"><i data-lucide="graduation-cap"></i> DBMS & AI TA</span>
+              </div>
+              <p class="widget-footnote">Mentoring undergraduate engineers in algorithmic logic & ML models.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: CONNECTED ECOSYSTEM & INTEGRATIONS HUB -->
+    <section id="integrations" class="integrations-section section-tight reveal-on-scroll">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag tag-coral"><i data-lucide="cpu"></i> High-Scale System Integration</div>
+          <h2 class="section-title">Connect Intelligence with the <span class="gradient-text-terracotta">software ecosystems</span> you use daily</h2>
+          <p class="section-description">
+            Interactive pipeline visualizer showing real-time data dispatch across AI vector databases, mobile clients, and containerized microservices.
+          </p>
+        </div>
+
+        <div class="integration-hub-wrapper glass-panel spotlight-card">
+          <div class="hub-laser-arc"></div>
+
+          <div class="integration-hub-grid">
+            <!-- Left Tool Nodes -->
+            <div class="hub-nodes-col hub-left">
+              <div class="integration-node-item glass-panel" data-integration="rag">
+                <div class="node-icon-box box-coral"><i data-lucide="brain"></i></div>
+                <div class="node-info">
+                  <div class="node-title">ChromaDB</div>
+                  <div class="node-role">Vector Semantic Store</div>
+                </div>
+                <div class="node-wire-port port-right"></div>
+              </div>
+
+              <div class="integration-node-item glass-panel" data-integration="fastapi">
+                <div class="node-icon-box box-sage"><i data-lucide="server"></i></div>
+                <div class="node-info">
+                  <div class="node-title">FastAPI</div>
+                  <div class="node-role">Async Python Inference</div>
+                </div>
+                <div class="node-wire-port port-right"></div>
+              </div>
+
+              <div class="integration-node-item glass-panel" data-integration="flutter">
+                <div class="node-icon-box box-amber"><i data-lucide="smartphone"></i></div>
+                <div class="node-info">
+                  <div class="node-title">Flutter / Dart</div>
+                  <div class="node-role">Cross-Platform Mobile</div>
+                </div>
+                <div class="node-wire-port port-right"></div>
+              </div>
+            </div>
+
+            <!-- Central Core System Node -->
+            <div class="hub-center-core-col">
+              <svg class="hub-cables-svg" viewBox="0 0 400 280" fill="none">
+                <path d="M 0 50 C 120 50, 100 140, 160 140" class="cable-wire" stroke="rgba(201,203,163,0.3)" stroke-width="2" stroke-dasharray="4 4"/>
+                <path d="M 0 140 C 90 140, 110 140, 160 140" class="cable-wire" stroke="rgba(201,203,163,0.3)" stroke-width="2" stroke-dasharray="4 4"/>
+                <path d="M 0 230 C 120 230, 100 140, 160 140" class="cable-wire" stroke="rgba(201,203,163,0.3)" stroke-width="2" stroke-dasharray="4 4"/>
+
+                <path d="M 400 50 C 280 50, 300 140, 240 140" class="cable-wire" stroke="rgba(201,203,163,0.3)" stroke-width="2" stroke-dasharray="4 4"/>
+                <path d="M 400 140 C 310 140, 290 140, 240 140" class="cable-wire" stroke="rgba(201,203,163,0.3)" stroke-width="2" stroke-dasharray="4 4"/>
+                <path d="M 400 230 C 280 230, 300 140, 240 140" class="cable-wire" stroke="rgba(201,203,163,0.3)" stroke-width="2" stroke-dasharray="4 4"/>
+
+                <circle cx="80" cy="95" r="4" class="laser-packet packet-coral"/>
+                <circle cx="320" cy="95" r="4" class="laser-packet packet-amber"/>
+                <circle cx="80" cy="185" r="4" class="laser-packet packet-sage"/>
+                <circle cx="320" cy="185" r="4" class="laser-packet packet-coral"/>
+              </svg>
+
+              <div class="core-emblem-box">
+                <div class="core-emblem-halo"></div>
+                <div class="core-emblem-inner">
+                  <div class="core-logo-monogram">NB</div>
+                  <span class="core-label">NOOR CORE</span>
+                  <div class="core-live-pulse"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Tool Nodes -->
+            <div class="hub-nodes-col hub-right">
+              <div class="integration-node-item glass-panel" data-integration="pytorch">
+                <div class="node-wire-port port-left"></div>
+                <div class="node-icon-box box-crimson"><i data-lucide="layers"></i></div>
+                <div class="node-info">
+                  <div class="node-title">PyTorch / CV</div>
+                  <div class="node-role">Computer Vision Models</div>
+                </div>
+              </div>
+
+              <div class="integration-node-item glass-panel" data-integration="docker">
+                <div class="node-wire-port port-left"></div>
+                <div class="node-icon-box box-sage"><i data-lucide="container"></i></div>
+                <div class="node-info">
+                  <div class="node-title">Docker & K8s</div>
+                  <div class="node-role">Cloud Microservices</div>
+                </div>
+              </div>
+
+              <div class="integration-node-item glass-panel" data-integration="postgres">
+                <div class="node-wire-port port-left"></div>
+                <div class="node-icon-box box-amber"><i data-lucide="database"></i></div>
+                <div class="node-info">
+                  <div class="node-title">PostgreSQL</div>
+                  <div class="node-role">Relational Data Engine</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hub-live-readout glass-panel">
+            <span class="readout-bullet"><span class="pulse-coral"></span> Active Telemetry Dispatch:</span>
+            <span class="readout-status-text" id="hub-live-text">
+              Real-time synchronization active across ChromaDB vector store, FastAPI inference, Flutter mobile clients, and Docker Kubernetes microservices.
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: FEATURED PRODUCTION PROJECTS -->
+    <section id="projects" class="projects-section section-tight reveal-on-scroll">
+      <div class="container">
+        <div class="section-header-flex">
+          <div>
+            <div class="section-tag tag-amber"><i data-lucide="code"></i> Featured Production Systems</div>
+            <h2 class="section-title">Engineered Applications & Research</h2>
+          </div>
+          <!-- Styled Pill Toggles -->
+          <div class="project-filter-pills" id="project-filter-tabs">
+            <button class="filter-pill active" data-category="all">
+              <i data-lucide="layers"></i> All Systems
+            </button>
+            <button class="filter-pill" data-category="aiml">
+              <i data-lucide="brain"></i> AI / ML
+            </button>
+            <button class="filter-pill" data-category="mobile">
+              <i data-lucide="smartphone"></i> Flutter Mobile
+            </button>
+            <button class="filter-pill" data-category="devops">
+              <i data-lucide="server"></i> DevOps & Cloud
+            </button>
+          </div>
+        </div>
+
+        <div class="projects-grid-showcase">
+          <!-- Project 1: MedAssist -->
+          <article class="showcase-project-card glass-panel spotlight-card border-beam-card" data-category="aiml" data-project-id="medassist" data-tilt>
+            <div class="border-beam"></div>
+            
+            <div class="project-preview-window">
+              <div class="preview-titlebar">
+                <div class="titlebar-dots">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-yellow"></span>
+                  <span class="dot dot-green"></span>
+                </div>
+                <span class="preview-url-text">medassist-rag-two.vercel.app</span>
+                <span class="preview-badge-status status-coral"><span class="pulse-coral"></span> LIVE DEMO</span>
+              </div>
+              
+              <div class="preview-art-canvas art-medassist">
+                <svg viewBox="0 0 540 220" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-vector-illustration">
+                  <rect width="540" height="220" fill="#231b24"/>
+                  <rect x="20" y="20" width="220" height="180" rx="10" fill="#2d232e" stroke="#534b52" stroke-width="1.5"/>
+                  <rect x="35" y="35" width="120" height="12" rx="3" fill="#e0ddcf"/>
+                  <rect x="35" y="60" width="190" height="36" rx="6" fill="#3b313c" stroke="#534b52"/>
+                  <text x="45" y="82" fill="#f1f0ea" font-family="'JetBrains Mono', monospace" font-size="10">query: "Differential diagnosis for..."</text>
+                  <rect x="35" y="110" width="190" height="75" rx="6" fill="#3b313c"/>
+                  <circle cx="50" cy="130" r="4" fill="#e0ddcf"/>
+                  <text x="62" y="133" fill="#f1f0ea" font-family="'Space Grotesk', sans-serif" font-size="10" font-weight="bold">Verified Evidence Match: 100%</text>
+                  <line x1="50" y1="148" x2="200" y2="148" stroke="#534b52" stroke-dasharray="2 2"/>
+                  <text x="50" y="168" fill="#e0ddcf" font-family="'Plus Jakarta Sans', sans-serif" font-size="9">Dual-layer filter: 0 hallucinations</text>
+                  
+                  <rect x="260" y="20" width="260" height="180" rx="10" fill="#2d232e" stroke="#534b52" stroke-width="1.5"/>
+                  <circle cx="390" cy="110" r="32" fill="#3b313c" stroke="#e0ddcf" stroke-width="2"/>
+                  <text x="362" y="114" fill="#f1f0ea" font-family="'Space Grotesk', sans-serif" font-size="10" font-weight="bold">ChromaDB</text>
+                  <circle cx="310" cy="60" r="14" fill="#474448" stroke="#e0ddcf"/>
+                  <text x="298" y="63" fill="#f1f0ea" font-family="'Plus Jakarta Sans', sans-serif" font-size="8">Chunk 1</text>
+                  <circle cx="470" cy="60" r="14" fill="#474448" stroke="#e0ddcf"/>
+                  <text x="458" y="63" fill="#f1f0ea" font-family="'Plus Jakarta Sans', sans-serif" font-size="8">Chunk 2</text>
+                  <circle cx="320" cy="160" r="14" fill="#474448" stroke="#e0ddcf"/>
+                  <text x="308" y="163" fill="#f1f0ea" font-family="'Plus Jakarta Sans', sans-serif" font-size="8">Chunk 3</text>
+                  <circle cx="460" cy="160" r="14" fill="#474448" stroke="#e0ddcf"/>
+                  <text x="448" y="163" fill="#f1f0ea" font-family="'Plus Jakarta Sans', sans-serif" font-size="8">Chunk 4</text>
+                  <line x1="322" y1="68" x2="365" y2="92" stroke="#e0ddcf" stroke-width="1.5" stroke-dasharray="3 3"/>
+                  <line x1="458" y1="68" x2="415" y2="92" stroke="#e0ddcf" stroke-width="1.5" stroke-dasharray="3 3"/>
+                  <line x1="332" y1="152" x2="368" y2="128" stroke="#e0ddcf" stroke-width="1.5" stroke-dasharray="3 3"/>
+                  <line x1="448" y1="152" x2="412" y2="128" stroke="#e0ddcf" stroke-width="1.5" stroke-dasharray="3 3"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="project-content-pane">
+              <div class="project-category-meta">
+                <span class="category-name tag-coral"><i data-lucide="brain"></i> AI / Retrieval-Augmented Generation</span>
+              </div>
+              <h3 class="project-title">MedAssist – RAG Clinical Knowledge Assistant</h3>
+              <p class="project-summary">
+                A high-precision clinical assistant delivering evidence-backed medical responses with zero hallucination. Features dual-layer semantic validation and high-throughput FastAPI inference.
+              </p>
+
+              <div class="project-highlights">
+                <div class="highlight-item"><i data-lucide="check" class="icon-coral"></i> 100% evaluation accuracy across 25 clinical test questions</div>
+                <div class="highlight-item"><i data-lucide="check" class="icon-coral"></i> Dual-layer semantic & LLM relevance verification</div>
+                <div class="highlight-item"><i data-lucide="check" class="icon-coral"></i> Live web app deployed on Vercel</div>
+              </div>
+
+              <div class="project-tech-stack">
+                <span class="tech-chip chip-coral">Python</span>
+                <span class="tech-chip chip-coral">RAG</span>
+                <span class="tech-chip chip-coral">ChromaDB</span>
+                <span class="tech-chip chip-coral">FastAPI</span>
+                <span class="tech-chip chip-coral">LLM Validation</span>
+                <span class="tech-chip chip-coral">Vercel</span>
+              </div>
+
+              <div class="project-footer">
+                <div class="project-actions-left">
+                  <a href="https://medassist-rag-two.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-demo-pill">
+                    <i data-lucide="play-circle"></i> Live App Demo
+                  </a>
+                  <button class="btn btn-outline-sm open-project-modal" data-modal="medassist">
+                    <i data-lucide="maximize-2"></i> Architecture
+                  </button>
+                </div>
+                <div class="project-links-group">
+                  <a href="https://github.com/noor-bibi-bi" target="_blank" rel="noopener noreferrer" class="btn btn-icon-glass" title="GitHub">
+                    <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                  </a>
+                  <a href="https://www.linkedin.com/in/noor-bibi-a75263282" target="_blank" rel="noopener noreferrer" class="btn btn-icon-glass" title="LinkedIn">
+                    <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect x="2" y="9" width="4" height="12"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: Atelier -->
+          <article class="showcase-project-card glass-panel spotlight-card" data-category="mobile aiml" data-project-id="atelier" data-tilt>
+            <div class="project-preview-window">
+              <div class="preview-titlebar">
+                <div class="titlebar-dots">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-yellow"></span>
+                  <span class="dot dot-green"></span>
+                </div>
+                <span class="preview-url-text">atelier-mobile-app.flutter</span>
+                <span class="preview-badge-status status-amber"><span class="pulse-amber"></span> COMPUTER VISION</span>
+              </div>
+              
+              <div class="preview-art-canvas art-atelier">
+                <svg viewBox="0 0 540 220" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-vector-illustration">
+                  <rect width="540" height="220" fill="#1F1517"/>
+                  <rect x="185" y="10" width="170" height="200" rx="18" fill="#2E1F23" stroke="#FFE1A8" stroke-width="2"/>
+                  <rect x="200" y="25" width="140" height="90" rx="10" fill="#3D292D"/>
+                  <circle cx="270" cy="65" r="24" stroke="#FFE1A8" stroke-dasharray="3 3" fill="none"/>
+                  <circle cx="270" cy="65" r="16" fill="#723D46"/>
+                  <rect x="205" y="125" width="130" height="30" rx="6" fill="#1F1517"/>
+                  <circle cx="220" cy="140" r="6" fill="#E26D5C"/>
+                  <circle cx="238" cy="140" r="6" fill="#FFE1A8"/>
+                  <circle cx="256" cy="140" r="6" fill="#C9CBA3"/>
+                  <circle cx="274" cy="140" r="6" fill="#723D46"/>
+                  <circle cx="292" cy="140" r="6" fill="#F1C40F"/>
+                  <circle cx="310" cy="140" r="6" fill="#E74C3C"/>
+                  <rect x="210" y="165" width="120" height="20" rx="10" fill="#472D30"/>
+                  <text x="232" y="179" fill="#FFF8F0" font-family="'Space Grotesk', sans-serif" font-size="9" font-weight="bold">Generate Match</text>
+                  <rect x="25" y="45" width="135" height="60" rx="8" fill="#2E1F23" stroke="#723D46"/>
+                  <text x="35" y="65" fill="#FFF8F0" font-family="'Space Grotesk', sans-serif" font-size="10" font-weight="bold">12-Season Model</text>
+                  <text x="35" y="82" fill="#FFE1A8" font-family="'Plus Jakarta Sans', sans-serif" font-size="8">Facial Undertone Scan</text>
+                  <text x="35" y="95" fill="#C9CBA3" font-family="'JetBrains Mono', monospace" font-size="8">Status: Calibrated</text>
+                  <rect x="380" y="45" width="135" height="60" rx="8" fill="#2E1F23" stroke="#723D46"/>
+                  <text x="390" y="65" fill="#FFF8F0" font-family="'Space Grotesk', sans-serif" font-size="10" font-weight="bold">FastAPI Backend</text>
+                  <text x="390" y="82" fill="#FFE1A8" font-family="'Plus Jakarta Sans', sans-serif" font-size="8">Wardrobe Match Engine</text>
+                  <text x="390" y="95" fill="#E26D5C" font-family="'JetBrains Mono', monospace" font-size="8">Latency: 95ms</text>
+                </svg>
+              </div>
+            </div>
+
+            <div class="project-content-pane">
+              <div class="project-category-meta">
+                <span class="category-name tag-amber"><i data-lucide="smartphone"></i> Flutter Mobile + Computer Vision</span>
+              </div>
+              <h3 class="project-title">Atelier – AI-Based Personal Styling Application</h3>
+              <p class="project-summary">
+                A cross-platform Flutter application generating hyper-personalized fashion styling recommendations using computer vision classification models trained on seasonal color analysis.
+              </p>
+
+              <div class="project-highlights">
+                <div class="highlight-item"><i data-lucide="check" class="icon-amber"></i> 12-season custom ML model for selfie undertone analysis</div>
+                <div class="highlight-item"><i data-lucide="check" class="icon-amber"></i> FastAPI backend powering wardrobe outfit planning</div>
+                <div class="highlight-item"><i data-lucide="check" class="icon-amber"></i> Real-time personalized color harmony matching</div>
+              </div>
+
+              <div class="project-tech-stack">
+                <span class="tech-chip chip-amber">Flutter</span>
+                <span class="tech-chip chip-amber">Dart</span>
+                <span class="tech-chip chip-amber">Computer Vision</span>
+                <span class="tech-chip chip-amber">FastAPI</span>
+                <span class="tech-chip chip-amber">Python</span>
+                <span class="tech-chip chip-amber">Machine Learning</span>
+              </div>
+
+              <div class="project-footer">
+                <button class="btn btn-outline-sm open-project-modal" data-modal="atelier">
+                  <i data-lucide="maximize-2"></i> Details & Architecture
+                </button>
+                <div class="project-links-group">
+                  <a href="https://github.com/noor-bibi-bi" target="_blank" rel="noopener noreferrer" class="btn btn-icon-glass" title="GitHub">
+                    <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                  </a>
+                  <a href="https://www.linkedin.com/in/noor-bibi-a75263282" target="_blank" rel="noopener noreferrer" class="btn btn-icon-glass" title="LinkedIn">
+                    <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect x="2" y="9" width="4" height="12"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: DevOpsFlow -->
+          <article class="showcase-project-card glass-panel spotlight-card" data-category="devops" data-project-id="devopsflow" data-tilt>
+            <div class="project-preview-window">
+              <div class="preview-titlebar">
+                <div class="titlebar-dots">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-yellow"></span>
+                  <span class="dot dot-green"></span>
+                </div>
+                <span class="preview-url-text">devopsflow-cluster.internal</span>
+                <span class="preview-badge-status status-sage"><span class="pulse-sage"></span> PIPELINE READY</span>
+              </div>
+              
+              <div class="preview-art-canvas art-devopsflow">
+                <svg viewBox="0 0 540 220" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-vector-illustration">
+                  <rect width="540" height="220" fill="#1F1517"/>
+                  <line x1="40" y1="110" x2="500" y2="110" stroke="#C9CBA3" stroke-width="2.5" stroke-dasharray="4 4"/>
+                  <circle cx="70" cy="110" r="24" fill="#2E1F23" stroke="#C9CBA3" stroke-width="2"/>
+                  <text x="56" y="114" fill="#FFF8F0" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold">GIT</text>
+                  <circle cx="190" cy="110" r="24" fill="#2E1F23" stroke="#C9CBA3" stroke-width="2"/>
+                  <text x="175" y="114" fill="#FFF8F0" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold">SCAN</text>
+                  <circle cx="310" cy="110" r="24" fill="#472D30" stroke="#E26D5C" stroke-width="2"/>
+                  <text x="290" y="114" fill="#FFF8F0" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold">DOCKER</text>
+                  <circle cx="430" cy="110" r="24" fill="#723D46" stroke="#C9CBA3" stroke-width="2"/>
+                  <text x="420" y="114" fill="#C9CBA3" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold">K8S</text>
+                  <rect x="35" y="150" width="70" height="20" rx="4" fill="#3D292D"/>
+                  <text x="44" y="163" fill="#C9CBA3" font-family="'Plus Jakarta Sans', sans-serif" font-size="8">✓ Commit</text>
+                  <rect x="155" y="150" width="70" height="20" rx="4" fill="#3D292D"/>
+                  <text x="165" y="163" fill="#C9CBA3" font-family="'Plus Jakarta Sans', sans-serif" font-size="8">✓ 0 Vulns</text>
+                  <rect x="275" y="150" width="70" height="20" rx="4" fill="#3D292D"/>
+                  <text x="288" y="163" fill="#C9CBA3" font-family="'Plus Jakarta Sans', sans-serif" font-size="8">✓ Image</text>
+                  <rect x="395" y="150" width="70" height="20" rx="4" fill="#3D292D"/>
+                  <text x="408" y="163" fill="#C9CBA3" font-family="'Plus Jakarta Sans', sans-serif" font-size="8">✓ Cluster</text>
+                </svg>
+              </div>
+            </div>
+
+            <div class="project-content-pane">
+              <div class="project-category-meta">
+                <span class="category-name tag-sage"><i data-lucide="server"></i> Cloud Microservices & Orchestration</span>
+              </div>
+              <h3 class="project-title">DevOpsFlow – Containerized CI/CD Platform</h3>
+              <p class="project-summary">
+                A scalable 3-tier microservices platform with automated CI/CD pipelines integrating automated unit testing, container vulnerability scanning, Docker orchestration, and Kubernetes clusters.
+              </p>
+
+              <div class="project-highlights">
+                <div class="highlight-item"><i data-lucide="check" class="icon-sage"></i> 3-tier microservices architecture</div>
+                <div class="highlight-item"><i data-lucide="check" class="icon-sage"></i> GitHub Actions automated security & vulnerability scans</div>
+                <div class="highlight-item"><i data-lucide="check" class="icon-sage"></i> Cloud-native Docker & Kubernetes cluster deployment</div>
+              </div>
+
+              <div class="project-tech-stack">
+                <span class="tech-chip chip-sage">Docker</span>
+                <span class="tech-chip chip-sage">Kubernetes</span>
+                <span class="tech-chip chip-sage">GitHub Actions</span>
+                <span class="tech-chip chip-sage">PostgreSQL</span>
+                <span class="tech-chip chip-sage">Express.js</span>
+                <span class="tech-chip chip-sage">React.js</span>
+              </div>
+
+              <div class="project-footer">
+                <button class="btn btn-outline-sm open-project-modal" data-modal="devopsflow">
+                  <i data-lucide="maximize-2"></i> Details & Architecture
+                </button>
+                <div class="project-links-group">
+                  <a href="https://github.com/noor-bibi-bi" target="_blank" rel="noopener noreferrer" class="btn btn-icon-glass" title="GitHub">
+                    <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                  </a>
+                  <a href="https://www.linkedin.com/in/noor-bibi-a75263282" target="_blank" rel="noopener noreferrer" class="btn btn-icon-glass" title="LinkedIn">
+                    <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect x="2" y="9" width="4" height="12"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: INTERACTIVE ARCHITECTURE BLUEPRINT -->
+    <section id="blueprint" class="blueprint-section section-tight reveal-on-scroll">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag tag-coral"><i data-lucide="cpu"></i> Subsystem Visualizer</div>
+          <h2 class="section-title">Deep Architecture Blueprint</h2>
+          <p class="section-description">
+            Inspect real-time data flows, vector indexing protocols, and edge inference mechanisms.
+          </p>
+        </div>
+
+        <div class="blueprint-interactive-hub glass-panel spotlight-card">
+          <div class="blueprint-nav-tabs">
+            <button class="blueprint-tab active" data-subsystem="rag">
+              <i data-lucide="brain" class="icon-coral"></i>
+              <span>Clinical RAG Pipeline</span>
+            </button>
+            <button class="blueprint-tab" data-subsystem="vision">
+              <i data-lucide="camera" class="icon-amber"></i>
+              <span>Computer Vision Engine</span>
+            </button>
+            <button class="blueprint-tab" data-subsystem="cloud">
+              <i data-lucide="server" class="icon-sage"></i>
+              <span>Microservices Cloud</span>
+            </button>
+          </div>
+
+          <div class="blueprint-stage">
+            <div class="blueprint-circuit-diagram" id="blueprint-circuit">
+              <!-- Injected via script.js -->
+            </div>
+
+            <div class="blueprint-info-drawer" id="blueprint-drawer">
+              <div class="drawer-header">
+                <span class="drawer-tag tag-coral" id="drawer-tag">INTELLIGENCE SUBSYSTEM</span>
+                <h3 class="drawer-title" id="drawer-title">Dual-Layer Clinical RAG Verification</h3>
+              </div>
+              <p class="drawer-desc" id="drawer-desc">
+                Converts medical queries into dense semantic vector embeddings in ChromaDB, filters candidate literature by cosine similarity thresholds, and passes evidence chunks through an LLM validation filter for 100% verified accuracy.
+              </p>
+              <div class="drawer-specs" id="drawer-specs">
+                <div class="spec-row"><strong>Latency</strong>: &lt;180ms inference response</div>
+                <div class="spec-row"><strong>Vector Index</strong>: ChromaDB HNSW Index</div>
+                <div class="spec-row"><strong>Verification</strong>: Dual-layer hallucination filter</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: ILLUMINATED METRO-LINE EXPERIENCE JOURNEY -->
+    <section id="journey" class="journey-section section-tight reveal-on-scroll">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag tag-amber"><i data-lucide="git-commit"></i> Career Progression</div>
+          <h2 class="section-title">Experience & Leadership Journey</h2>
+          <p class="section-description">
+            Combining technical instruction, academic excellence, and community developer leadership.
+          </p>
+        </div>
+
+        <div class="metro-journey-wrapper">
+          <div class="metro-track-line">
+            <div class="metro-signal-pulse" id="metro-pulse"></div>
+          </div>
+
+          <!-- Station 1: RISE Instructor -->
+          <div class="metro-station-node active">
+            <div class="station-marker">
+              <div class="marker-core marker-coral"></div>
+              <span class="station-year">Present</span>
+            </div>
+            <div class="station-card glass-panel spotlight-card">
+              <div class="station-head">
+                <div>
+                  <span class="station-role tag-linen">Instructor</span>
+                  <h3 class="station-company">RISE – Resilient Innovators for Skill-building & Elevation</h3>
+                </div>
+                <span class="station-loc"><i data-lucide="map-pin"></i> Lahore, Pakistan</span>
+              </div>
+              <ul class="station-bullets">
+                <li>Designing curriculum and mentoring students in algorithmic thinking and digital problem-solving.</li>
+                <li>Facilitating hands-on laboratory exercises translating complex CS concepts into practical projects.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Station 2: Fiverr - Mobile & Frontend Developer -->
+          <div class="metro-station-node">
+            <div class="station-marker">
+              <div class="marker-core marker-amber"></div>
+              <span class="station-year">2023 – 2025</span>
+            </div>
+            <div class="station-card glass-panel spotlight-card">
+              <div class="station-head">
+                <div>
+                  <span class="station-role tag-ivory">Mobile & Frontend Developer (Freelance · 2 yrs 1 mo)</span>
+                  <h3 class="station-company">Fiverr</h3>
+                </div>
+                <span class="station-loc"><i data-lucide="globe"></i> Remote / Global Clients</span>
+              </div>
+              <ul class="station-bullets">
+                <li><strong>Mobile Developer (2024 – 2025)</strong>: Engineered scalable Flutter cross-platform applications, integrated JWT authentication protocols, state management, and robust REST APIs for international clients.</li>
+                <li><strong>Frontend Developer (2023 – 2025)</strong>: Built high-performance, mobile-responsive web interfaces with modern JavaScript, CSS architectures, and interactive UI component libraries.</li>
+              </ul>
+              <div class="station-skills-strip" style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px;">
+                <span class="tech-chip">Flutter</span>
+                <span class="tech-chip">JWT Authentication</span>
+                <span class="tech-chip">REST APIs</span>
+                <span class="tech-chip">Frontend Engineering</span>
+                <span class="tech-chip">UI/UX</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Station 3: Upwork - Freelance Developer -->
+          <div class="metro-station-node">
+            <div class="station-marker">
+              <div class="marker-core marker-sage"></div>
+              <span class="station-year">2023 – 2025</span>
+            </div>
+            <div class="station-card glass-panel spotlight-card">
+              <div class="station-head">
+                <div>
+                  <span class="station-role tag-linen">Freelance Developer (Jul 2023 – 2025 · 1 yr 7 mos)</span>
+                  <h3 class="station-company">Upwork</h3>
+                </div>
+                <span class="station-loc"><i data-lucide="globe"></i> Remote</span>
+              </div>
+              <ul class="station-bullets">
+                <li>Delivered end-to-end full-stack web and mobile client solutions with clean, maintainable architecture.</li>
+                <li>Collaborated closely with founders and international clients on scoping, rapid prototyping, and deployment.</li>
+              </ul>
+              <div class="station-skills-strip" style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px;">
+                <span class="tech-chip">Full-Stack Solutions</span>
+                <span class="tech-chip">Client Delivery</span>
+                <span class="tech-chip">API Integration</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Station 4: Bytecode Technologies - Frontend Developer -->
+          <div class="metro-station-node">
+            <div class="station-marker">
+              <div class="marker-core marker-amber"></div>
+              <span class="station-year">2023 – 2024</span>
+            </div>
+            <div class="station-card glass-panel spotlight-card">
+              <div class="station-head">
+                <div>
+                  <span class="station-role tag-moleskin">Frontend Developer (Freelance)</span>
+                  <h3 class="station-company">Bytecode Technologies Pvt. Ltd.</h3>
+                </div>
+                <span class="station-loc"><i data-lucide="map-pin"></i> India · Remote</span>
+              </div>
+              <ul class="station-bullets">
+                <li>Collaborated on building intuitive frontend user interfaces and component design systems.</li>
+                <li>Ensured cross-browser performance, responsiveness, and seamless integration with backend services.</li>
+              </ul>
+              <div class="station-skills-strip" style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px;">
+                <span class="tech-chip">Frontend Engineering</span>
+                <span class="tech-chip">UI Components</span>
+                <span class="tech-chip">Remote Collaboration</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Station 5: SciTech President -->
+          <div class="metro-station-node">
+            <div class="station-marker">
+              <div class="marker-core marker-amber"></div>
+              <span class="station-year">Leadership</span>
+            </div>
+            <div class="station-card glass-panel spotlight-card">
+              <div class="station-head">
+                <div>
+                  <span class="station-role tag-ivory">President</span>
+                  <h3 class="station-company">BNU SciTech Society • Beaconhouse National University</h3>
+                </div>
+                <span class="station-loc"><i data-lucide="map-pin"></i> Lahore, Pakistan</span>
+              </div>
+              <ul class="station-bullets">
+                <li>Leading university-wide tech society, organizing competitive hackathons, workshops, and speaker series.</li>
+                <li>Fostering networking channels between undergraduate developers and industry leaders.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Station 6: Teaching Assistant -->
+          <div class="metro-station-node">
+            <div class="station-marker">
+              <div class="marker-core marker-sage"></div>
+              <span class="station-year">Teaching</span>
+            </div>
+            <div class="station-card glass-panel spotlight-card">
+              <div class="station-head">
+                <div>
+                  <span class="station-role tag-linen">Teaching Assistant – DBMS, ADBMS & AI</span>
+                  <h3 class="station-company">Beaconhouse National University</h3>
+                </div>
+                <span class="station-loc"><i data-lucide="map-pin"></i> Lahore, Pakistan</span>
+              </div>
+              <ul class="station-bullets">
+                <li>Instructed 60+ students in relational DBMS, SQL optimization, and AI model evaluation.</li>
+                <li>Evaluated practical lab assignments and mentored students to mastery.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Station 7: Upwork - Social Media Manager -->
+          <div class="metro-station-node">
+            <div class="station-marker">
+              <div class="marker-core marker-charcoal"></div>
+              <span class="station-year">2021 – 2022</span>
+            </div>
+            <div class="station-card glass-panel spotlight-card">
+              <div class="station-head">
+                <div>
+                  <span class="station-role tag-charcoal">Social Media Manager (Contract)</span>
+                  <h3 class="station-company">Upwork</h3>
+                </div>
+                <span class="station-loc"><i data-lucide="globe"></i> Remote</span>
+              </div>
+              <ul class="station-bullets">
+                <li>Managed digital communication strategies, audience engagement campaigns, and project deliverables.</li>
+                <li>Coordinated timeline management, content structuring, and client reporting.</li>
+              </ul>
+              <div class="station-skills-strip" style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px;">
+                <span class="tech-chip">Project Management</span>
+                <span class="tech-chip">Digital Communication</span>
+                <span class="tech-chip">Freelancing</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Station 8: BS Computer Science -->
+          <div class="metro-station-node">
+            <div class="station-marker">
+              <div class="marker-core marker-linen"></div>
+              <span class="station-year">Degree</span>
+            </div>
+            <div class="station-card glass-panel spotlight-card">
+              <div class="station-head">
+                <div>
+                  <span class="station-role tag-linen">Bachelor of Science in Computer Science (BSCS)</span>
+                  <h3 class="station-company">Beaconhouse National University</h3>
+                </div>
+                <span class="station-loc"><i data-lucide="graduation-cap"></i> 2022 – 2026</span>
+              </div>
+              <p class="station-summary" style="margin-top: 8px; font-size: 0.88rem; color: var(--text-muted);">
+                Core coursework in AI, Machine Learning, DBMS, Distributed Systems, Software Engineering, and Algorithms.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: DEVELOPER CLI TERMINAL & AI PLAYGROUND -->
+    <section id="terminal" class="terminal-section section-tight reveal-on-scroll">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag tag-sage"><i data-lucide="terminal"></i> Developer Console</div>
+          <h2 class="section-title">Interactive Terminal & AI Playground</h2>
+          <p class="section-description">
+            Run commands to benchmark Noor's RAG system, inspect tech stacks, or launch live app demos directly.
+          </p>
+        </div>
+
+        <div class="terminal-container glass-panel spotlight-card">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <div class="terminal-title">
+              <i data-lucide="terminal" class="icon-coral"></i> noor-bibi@portfolio: ~/core-systems
+            </div>
+            <div class="terminal-status">
+              <span class="pulse-coral"></span> ONLINE
+            </div>
+          </div>
+
+          <div class="terminal-quick-cmds">
+            <span class="cmd-label">Quick Commands:</span>
+            <button class="cmd-chip" data-cmd="help">help</button>
+            <button class="cmd-chip" data-cmd="skills">skills</button>
+            <button class="cmd-chip" data-cmd="projects">projects</button>
+            <button class="cmd-chip" data-cmd="medassist">medassist-demo</button>
+            <button class="cmd-chip" data-cmd="eval-rag">eval-rag</button>
+            <button class="cmd-chip" data-cmd="experience">experience</button>
+            <button class="cmd-chip" data-cmd="resume">resume</button>
+            <button class="cmd-chip" data-cmd="contact">contact</button>
+            <button class="cmd-chip" data-cmd="clear">clear</button>
+          </div>
+
+          <div class="terminal-body" id="terminal-body">
+            <div class="terminal-line welcome-line">
+              <span class="terminal-text-brand">⚡ Noor Bibi's Interactive Terminal [Version 3.5-WarmLuxury]</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-text-dim">Type <span class="text-highlight">'help'</span> or click any quick command above to run live benchmarks and explore architectures.</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-prompt">guest@noor-portfolio:~$</span>
+              <span class="terminal-cmd-echo">help</span>
+            </div>
+            <div class="terminal-output">
+Available Commands:
+  • <span class="text-highlight">skills</span>          : Display full tech stack & proficiency breakdown
+  • <span class="text-highlight">projects</span>        : List architecture summaries for MedAssist, Atelier, DevOpsFlow
+  • <span class="text-highlight">medassist</span>       : Direct link to live MedAssist Web App
+  • <span class="text-highlight">eval-rag</span>        : Run live simulation of Noor's dual-layer RAG hallucination test
+  • <span class="text-highlight">experience</span>      : View leadership roles (RISE Instructor, SciTech President, TA)
+  • <span class="text-highlight">resume</span>          : Trigger the instant PDF Resume viewer modal
+  • <span class="text-highlight">contact</span>         : Fetch direct email, phone, LinkedIn & GitHub details
+  • <span class="text-highlight">clear</span>           : Clear the terminal console screen
+            </div>
+          </div>
+
+          <form class="terminal-input-row" id="terminal-form" autocomplete="off">
+            <span class="terminal-prompt">guest@noor-portfolio:~$</span>
+            <input type="text" id="terminal-input" placeholder="Type a command (e.g., 'eval-rag', 'medassist', 'skills')..." autofocus spellcheck="false">
+            <button type="submit" class="terminal-submit-btn"><i data-lucide="corner-down-left"></i> Run</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 9: CONTACT & DIRECT DISPATCH CONSOLE -->
+    <section id="contact" class="contact-section section-tight reveal-on-scroll">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag tag-coral"><i data-lucide="send"></i> Direct Communication</div>
+          <h2 class="section-title">Initiate Contact with Noor</h2>
+          <p class="section-description">
+            Send an instant message directly to <strong>noorbibi803@gmail.com</strong> with live confirmation.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info-col">
+            <div class="contact-card glass-panel spotlight-card">
+              <div class="contact-card-icon icon-coral-box">
+                <i data-lucide="mail"></i>
+              </div>
+              <div class="contact-card-info">
+                <span class="card-label">Direct Email</span>
+                <div class="card-value">noorbibi803@gmail.com</div>
+              </div>
+              <div class="contact-card-actions">
+                <a href="mailto:noorbibi803@gmail.com" class="direct-mail-btn" title="Open Mail Client">
+                  <i data-lucide="external-link"></i>
+                </a>
+                <button class="copy-btn" data-copy="noorbibi803@gmail.com" title="Copy Email">
+                  <i data-lucide="copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="contact-card glass-panel spotlight-card">
+              <div class="contact-card-icon icon-amber-box">
+                <i data-lucide="phone"></i>
+              </div>
+              <div class="contact-card-info">
+                <span class="card-label">Phone / WhatsApp</span>
+                <div class="card-value">+92 328 4742501</div>
+              </div>
+              <div class="contact-card-actions">
+                <a href="https://wa.me/923284742501" target="_blank" rel="noopener noreferrer" class="direct-mail-btn" title="WhatsApp Message">
+                  <i data-lucide="message-circle"></i>
+                </a>
+                <button class="copy-btn" data-copy="+923284742501" title="Copy Phone">
+                  <i data-lucide="copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="contact-card glass-panel spotlight-card">
+              <div class="contact-card-icon icon-sage-box">
+                <i data-lucide="map-pin"></i>
+              </div>
+              <div class="contact-card-info">
+                <span class="card-label">Location & Timezone</span>
+                <div class="card-value">Lahore, Pakistan (PKT / UTC+5)</div>
+              </div>
+              <div class="status-chip tag-sage">Open to Global Remote</div>
+            </div>
+
+            <div class="social-links-grid">
+              <a href="https://www.linkedin.com/in/noor-bibi-a75263282" target="_blank" rel="noopener noreferrer" class="social-btn social-linkedin glass-panel spotlight-card">
+                <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+                <div class="social-btn-text">
+                  <strong>LinkedIn</strong>
+                  <span>/in/noor-bibi-a75263282</span>
+                </div>
+                <i data-lucide="external-link" class="social-ext-icon"></i>
+              </a>
+              <a href="https://github.com/noor-bibi-bi" target="_blank" rel="noopener noreferrer" class="social-btn social-github glass-panel spotlight-card">
+                <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <div class="social-btn-text">
+                  <strong>GitHub</strong>
+                  <span>@noor-bibi-bi</span>
+                </div>
+                <i data-lucide="external-link" class="social-ext-icon"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-form-col">
+            <div class="contact-form-card glass-panel spotlight-card">
+              <div class="form-header-badge">
+                <span class="pulse-coral"></span>
+                <span>Direct Inbox: noorbibi803@gmail.com</span>
+              </div>
+              <h3 class="form-title">Send a Direct Message</h3>
+              <p class="form-subtitle">Messages are dispatched directly to Noor's primary email with guaranteed reply.</p>
+
+              <form id="contact-form" action="https://formsubmit.co/noorbibi803@gmail.com" method="POST">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_subject" id="hidden-subject" value="[Portfolio Inquiry] New message from Portfolio Website">
+
+                <div class="form-group">
+                  <label for="form-name">Your Full Name / Organization *</label>
+                  <div class="input-wrapper">
+                    <i data-lucide="user"></i>
+                    <input type="text" id="form-name" name="name" placeholder="e.g. Sarah Jenkins" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="form-email">Your Work Email *</label>
+                  <div class="input-wrapper">
+                    <i data-lucide="at-sign"></i>
+                    <input type="email" id="form-email" name="email" placeholder="sarah.jenkins@company.com" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="form-subject">Inquiry Focus</label>
+                  <div class="input-wrapper">
+                    <i data-lucide="briefcase"></i>
+                    <select id="form-subject" name="inquiry_type">
+                      <option value="AI/ML Engineering Opportunity">AI/ML Engineering Opportunity</option>
+                      <option value="Mobile App Development (Flutter)">Mobile App Development (Flutter)</option>
+                      <option value="Software Engineering Role">Software Engineering Role</option>
+                      <option value="Project Collaboration / Consultation">Project Collaboration / Consultation</option>
+                      <option value="General Technical Inquiry">General Technical Inquiry</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="form-message">Message Details *</label>
+                  <div class="input-wrapper textarea-wrapper">
+                    <i data-lucide="message-square"></i>
+                    <textarea id="form-message" name="message" rows="4" placeholder="Hi Noor, reaching out regarding your MedAssist RAG project and AI/Mobile background..." required></textarea>
+                  </div>
+                </div>
+
+                <div class="form-btn-group">
+                  <button type="submit" class="btn btn-primary" id="submit-contact-btn">
+                    <i data-lucide="send" id="btn-submit-icon"></i>
+                    <span id="btn-submit-text">Dispatch Message Now</span>
+                  </button>
+                  <button type="button" class="btn btn-glass" id="open-client-btn" title="Open in your default email client">
+                    <i data-lucide="mail"></i>
+                    <span>Open in Email App</span>
+                  </button>
+                </div>
+
+                <div class="form-feedback" id="form-feedback"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <div class="logo-circle sm">
+          <span>NB</span>
+        </div>
+        <div>
+          <div class="footer-brand-name">Noor Bibi</div>
+          <div class="footer-brand-sub">AI/ML Engineer & Mobile Developer</div>
+        </div>
+      </div>
+
+      <div class="footer-social-strip">
+        <a href="https://github.com/noor-bibi-bi" target="_blank" rel="noopener noreferrer" class="footer-link-badge" title="GitHub">
+          <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/noor-bibi-a75263282" target="_blank" rel="noopener noreferrer" class="footer-link-badge" title="LinkedIn">
+          <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://medassist-rag-two.vercel.app/" target="_blank" rel="noopener noreferrer" class="footer-link-badge" title="MedAssist Live App">
+          <i data-lucide="activity"></i> MedAssist App
+        </a>
+        <a href="mailto:noorbibi803@gmail.com" class="footer-link-badge" title="Direct Email">
+          <i data-lucide="mail"></i> Email
+        </a>
+      </div>
+
+      <div class="footer-copyright">
+        © 2026 Noor Bibi • <a href="Noor_CV.pdf" download class="footer-cv-link">Download CV (PDF)</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- RESUME MODAL VIEWER -->
+  <div class="modal-backdrop" id="resume-modal" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title">
+    <div class="modal-container glass-panel modal-lg">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <i data-lucide="file-text" class="modal-icon icon-coral"></i>
+          <div>
+            <h3 id="resume-modal-title" class="modal-title">Curriculum Vitae — Noor Bibi</h3>
+            <p class="modal-subtitle">AI/ML Engineer • Mobile App Developer • Software Engineer</p>
+          </div>
+        </div>
+        <div class="modal-actions-right">
+          <a href="Noor_CV.pdf" download="Noor_Bibi_CV.pdf" class="btn btn-primary-sm">
+            <i data-lucide="download"></i> Download PDF
+          </a>
+          <button class="modal-close-btn" id="close-resume-modal" aria-label="Close modal">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+      </div>
+      <div class="modal-body modal-pdf-body">
+        <iframe src="Noor_CV.pdf#toolbar=1&navpanes=0" class="pdf-iframe" title="Noor Bibi CV Preview"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECT DETAILS MODAL -->
+  <div class="modal-backdrop" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+    <div class="modal-container glass-panel modal-md">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <i data-lucide="layers" class="modal-icon icon-coral" id="project-modal-icon"></i>
+          <div>
+            <h3 id="project-modal-title" class="modal-title">Project Title</h3>
+            <p class="modal-subtitle" id="project-modal-subtitle">Subsystem / Category</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="close-project-modal" aria-label="Close modal">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="project-modal-content">
+        <!-- Injected via script.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast-notification glass-panel" id="toast">
+    <i data-lucide="check" class="toast-icon"></i>
+    <span id="toast-message">Copied to clipboard!</span>
+  </div>
+
+  <!-- App Script -->
+  <script src="script.js"></script>
+</body>
+</html>

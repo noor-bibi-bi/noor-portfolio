@@ -1,0 +1,14 @@
+.DS_Store
+Thumbs.db
+node_modules/
+.vercel
+*.log
+
+# Personal Profile Images
+*.jpeg
+*.jpg
+*.png
+Professional-pfp.jpeg
+Noor-pfp-cutout.png
+Noor-pfp-portrait.png
+Noor-pfp-bust.png
