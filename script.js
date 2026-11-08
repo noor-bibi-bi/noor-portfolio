@@ -1,18 +1,26 @@
 /**
  * NOOR BIBI PORTFOLIO — ADVANCED MULTI-ANIMATION & SYSTEM ARCHITECTURE ENGINE
  * Coolors Palette: #C9CBA3, #FFE1A8, #E26D5C, #723D46, #472D30
- * 
- * Features:
- *  - SS-2 Connected Integration Hub with real-time telemetry dispatch
- *  - Enlarged Prominent Portrait Hero (Clean, without overlapping pills) & Full CV intro
- *  - 2-Row Dual Direction Marquee Tech Ticker
- *  - Prominent Benchmarks & Waveform Telemetry HUD
- *  - Filter pill toggles & modal architecture deep dives
- *  - Automated email dispatcher to noorbibi803@gmail.com
- *  - Interactive developer CLI terminal & simulation playground
  */
 
+// Immediate Scroll Restoration & Position Reset (High Priority Bug Fix)
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
+if (window.location.hash) {
+  history.replaceState(null, '', window.location.pathname + window.location.search);
+  window.scrollTo(0, 0);
+}
+
+window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
+});
+
 document.addEventListener('DOMContentLoaded', () => {
+  window.scrollTo(0, 0);
+
   // Initialize Lucide Icons
   if (window.lucide) {
     window.lucide.createIcons();
@@ -197,9 +205,24 @@ function initThreeJsHero() {
   });
 
   let clock = new THREE.Clock();
+  let isHeroVisible = true;
+
+  if ('IntersectionObserver' in window) {
+    const heroEl = document.getElementById('hero');
+    if (heroEl) {
+      const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          isHeroVisible = entry.isIntersecting;
+        });
+      }, { threshold: 0.05 });
+      heroObserver.observe(heroEl);
+    }
+  }
 
   function animate() {
     requestAnimationFrame(animate);
+    if (!isHeroVisible) return;
+
     const elapsedTime = clock.getElapsedTime();
 
     targetX += (mouseX - targetX) * 0.05;
@@ -226,12 +249,12 @@ function initIntegrationHub() {
   if (!readoutText) return;
 
   const nodeTelemetries = {
-    rag: "⚡ ChromaDB Connected: Indexing 1,500+ high-dimensional clinical vector embeddings for sub-180ms evidence retrieval in MedAssist.",
-    fastapi: "⚡ FastAPI Backend: Handling asynchronous RESTful inference pipelines with high-throughput Pydantic model serialization.",
-    flutter: "⚡ Flutter & Dart: Cross-platform mobile client powering camera vision stream capture and real-time palette rendering in Atelier.",
-    pytorch: "⚡ PyTorch & Computer Vision: 12-season custom facial undertone classification model trained on portrait dataset.",
-    docker: "⚡ Docker & Kubernetes: Automated GitHub Actions container packaging with zero-vulnerability security scan pipelines.",
-    postgres: "⚡ PostgreSQL Engine: ACID-compliant relational data modeling, query optimization, and structured user profile storage."
+    rag: "ChromaDB: Indexing dense clinical vector embeddings for semantic evidence retrieval in MedAssist.",
+    fastapi: "FastAPI Backend: Handling asynchronous RESTful inference pipelines with high-throughput Pydantic model serialization.",
+    flutter: "Flutter & Dart: Cross-platform client powering camera vision stream capture and palette rendering in Atelier.",
+    pytorch: "Computer Vision: 12-season custom facial undertone classification model trained on portrait dataset.",
+    docker: "Docker & Kubernetes: Automated GitHub Actions container packaging with vulnerability scanning pipelines.",
+    postgres: "PostgreSQL Engine: ACID-compliant relational data modeling, query optimization, and structured user profile storage."
   };
 
   nodes.forEach(node => {
@@ -259,11 +282,11 @@ const blueprintData = {
   rag: {
     tag: "INTELLIGENCE SUBSYSTEM",
     title: "Dual-Layer Clinical RAG Verification",
-    desc: "Converts medical queries into dense semantic vector embeddings in ChromaDB, filters candidate literature by cosine similarity thresholds, and passes evidence chunks through an LLM validation filter for 100% verified accuracy.",
+    desc: "Converts medical queries into dense semantic vector embeddings in ChromaDB, filters candidate literature by cosine similarity thresholds, and passes evidence chunks through an LLM validation filter with dual-layer hallucination mitigation.",
     specs: [
-      { label: "Latency", value: "<180ms inference response" },
+      { label: "Architecture", value: "FastAPI asynchronous inference pipeline" },
       { label: "Vector Index", value: "ChromaDB HNSW Dense Index" },
-      { label: "Verification", value: "Dual-layer semantic + LLM filter (0 hallucinations)" }
+      { label: "Verification", value: "Dual-layer hallucination mitigation" }
     ],
     svg: `
       <svg viewBox="0 0 500 200" fill="none" class="circuit-svg" xmlns="http://www.w3.org/2000/svg">
@@ -285,11 +308,11 @@ const blueprintData = {
   vision: {
     tag: "COMPUTER VISION SUBSYSTEM",
     title: "12-Season Facial Undertone ML Engine",
-    desc: "Processes real-time camera capture in Flutter, detects facial landmark keypoints, extracts undertone pigmentation histograms, and infers seasonal palette alignment using a calibrated classifier.",
+    desc: "Processes camera capture in Flutter, detects facial landmark keypoints, extracts undertone pigmentation histograms, and infers seasonal palette alignment using a trained classifier.",
     specs: [
       { label: "Framework", value: "Flutter Mobile + Python CV" },
       { label: "Classification", value: "12-Season chromatic color matrix" },
-      { label: "Inference", value: "Real-time edge & FastAPI backend" }
+      { label: "Inference", value: "Flutter client & FastAPI backend" }
     ],
     svg: `
       <svg viewBox="0 0 500 200" fill="none" class="circuit-svg" xmlns="http://www.w3.org/2000/svg">
@@ -311,11 +334,11 @@ const blueprintData = {
   cloud: {
     tag: "INFRASTRUCTURE SUBSYSTEM",
     title: "Containerized Microservices & Automated CI/CD",
-    desc: "Implements high-availability 3-tier microservice architecture with automated GitHub Actions testing, security vulnerability scanning, Docker containerization, and Kubernetes cluster orchestration.",
+    desc: "Implements 3-tier microservice architecture with automated GitHub Actions testing, security vulnerability scanning, Docker containerization, and Kubernetes cluster orchestration.",
     specs: [
       { label: "Orchestration", value: "Docker & Kubernetes cluster" },
       { label: "CI/CD", value: "GitHub Actions automated pipelines" },
-      { label: "Database", value: "PostgreSQL with connection pooling" }
+      { label: "Database", value: "Database: PostgreSQL" }
     ],
     svg: `
       <svg viewBox="0 0 500 200" fill="none" class="circuit-svg" xmlns="http://www.w3.org/2000/svg">
@@ -330,7 +353,7 @@ const blueprintData = {
         <text x="318" y="104" fill="#e0ddcf" font-family="'JetBrains Mono'" font-size="9" font-weight="bold">K8S</text>
         
         <rect x="430" y="70" width="60" height="60" rx="8" fill="#3b313c" stroke="#e0ddcf" stroke-width="1.5"/>
-        <text x="444" y="104" fill="#f1f0ea" font-family="'JetBrains Mono'" font-size="9" font-weight="bold">PROD</text>
+        <text x="440" y="104" fill="#f1f0ea" font-family="'JetBrains Mono'" font-size="9" font-weight="bold">DEPLOY</text>
       </svg>
     `
   }
@@ -462,43 +485,59 @@ function initTerminal() {
     help: () => `
 Available Commands:
   • <span class="text-highlight">skills</span>          : Display full tech stack & proficiency breakdown
-  • <span class="text-highlight">projects</span>        : List architecture summaries for MedAssist, Atelier, DevOpsFlow
+  • <span class="text-highlight">projects</span>        : List architecture summaries for MedAssist, SmogSense, Atelier, DevOpsFlow
   • <span class="text-highlight">medassist</span>       : Direct link to live MedAssist Web App
-  • <span class="text-highlight">eval-rag</span>        : Run live simulation of Noor's dual-layer RAG hallucination test
-  • <span class="text-highlight">experience</span>      : View leadership roles (RISE Instructor, SciTech President, TA)
+  • <span class="text-highlight">smogsense</span>       : Direct link to live SmogSense Air Quality App
+  • <span class="text-highlight">eval-rag</span>        : Run simulation of Noor's dual-layer RAG hallucination test (demo simulation)
+  • <span class="text-highlight">experience</span>      : View professional roles & leadership journey
   • <span class="text-highlight">resume</span>          : Trigger the instant PDF Resume viewer modal
   • <span class="text-highlight">contact</span>         : Fetch direct email, phone, LinkedIn & GitHub details
   • <span class="text-highlight">clear</span>           : Clear the terminal console screen
     `,
     skills: () => `
 <span class="text-highlight">⚡ Technical Competencies & Ecosystem:</span>
-  • <strong>AI / ML:</strong> RAG, Large Language Models (LLMs), Computer Vision (12-season classifier), NLP, ChromaDB, PyTorch
-  • <strong>Software & Mobile:</strong> Python (FastAPI, Flask, Django), Flutter, Dart, RESTful APIs, Node.js, Express.js
-  • <strong>Databases & Cloud:</strong> PostgreSQL, MySQL, MongoDB, ChromaDB, SQLAlchemy, GCP, Azure, Firebase
+  • <strong>AI / ML:</strong> RAG, Large Language Models (LLMs), XGBoost, Computer Vision (12-season classifier), NLP, ChromaDB
+  • <strong>Full Stack & Mobile:</strong> Python (FastAPI, Flask, Django), Flutter, Dart, RESTful APIs, Node.js, Express.js, React.js, Next.js
+  • <strong>Databases & Cloud:</strong> PostgreSQL, MySQL, ChromaDB, SQLAlchemy, Vercel, Firebase
   • <strong>DevOps & Tools:</strong> Docker, Kubernetes, GitHub Actions CI/CD, Nginx, Linux, Git, JWT, OAuth 2.0
     `,
     projects: () => `
 <span class="text-highlight">🚀 Featured Engineering Systems:</span>
   1. <strong>MedAssist</strong> : RAG-Powered Clinical Assistant with dual-layer hallucination mitigation.
      • Live App: <a href="https://medassist-rag-two.vercel.app/" target="_blank" style="color: #e0ddcf; text-decoration: underline;">https://medassist-rag-two.vercel.app/</a>
-     • Achieved 100% evaluation accuracy across 25 clinical test questions.
-  2. <strong>Atelier</strong> : AI-Based Personal Styling App with Flutter & 12-season CV model.
-  3. <strong>DevOpsFlow</strong> : Scalable 3-tier microservices platform with automated CI/CD container security.
+     • GitHub  : <a href="https://github.com/noor-bibi-bi/medassist-rag" target="_blank" style="color: #e0ddcf; text-decoration: underline;">https://github.com/noor-bibi-bi/medassist-rag</a>
+     • 25/25 on a 25-question eval set across five medical categories. Known limitation: can still overfit on some responses.
+  2. <strong>SmogSense</strong> : AI Air Quality Forecasting for Lahore with FastAPI & XGBoost Dual Engine.
+     • Live App: <a href="https://smog-sense.vercel.app/" target="_blank" style="color: #e0ddcf; text-decoration: underline;">https://smog-sense.vercel.app/</a>
+     • GitHub  : <a href="https://github.com/noor-bibi-bi/SmogSense" target="_blank" style="color: #e0ddcf; text-decoration: underline;">https://github.com/noor-bibi-bi/SmogSense</a>
+  3. <strong>Atelier</strong> : AI-Based Personal Styling App with Flutter & 12-season CV model (Proprietary).
+  4. <strong>DevOpsFlow</strong> : Scalable 3-tier microservices platform with automated CI/CD container vulnerability scanning.
+     • GitHub  : <a href="https://github.com/noor-bibi-bi/devopsflow-Project" target="_blank" style="color: #e0ddcf; text-decoration: underline;">https://github.com/noor-bibi-bi/devopsflow-Project</a>
     `,
     medassist: () => {
       window.open('https://medassist-rag-two.vercel.app/', '_blank');
       return `🚀 Opening MedAssist live demo web application (<a href="https://medassist-rag-two.vercel.app/" target="_blank" style="color: #e0ddcf; text-decoration: underline;">https://medassist-rag-two.vercel.app/</a>)...`;
     },
+    "medassist-demo": () => {
+      window.open('https://medassist-rag-two.vercel.app/', '_blank');
+      return `🚀 Opening MedAssist live demo web application (<a href="https://medassist-rag-two.vercel.app/" target="_blank" style="color: #e0ddcf; text-decoration: underline;">https://medassist-rag-two.vercel.app/</a>)...`;
+    },
+    smogsense: () => {
+      window.open('https://smog-sense.vercel.app/', '_blank');
+      return `🚀 Opening SmogSense live air quality forecasting application (<a href="https://smog-sense.vercel.app/" target="_blank" style="color: #e0ddcf; text-decoration: underline;">https://smog-sense.vercel.app/</a>)...`;
+    },
+    "smogsense-demo": () => {
+      window.open('https://smog-sense.vercel.app/', '_blank');
+      return `🚀 Opening SmogSense live air quality forecasting application (<a href="https://smog-sense.vercel.app/" target="_blank" style="color: #e0ddcf; text-decoration: underline;">https://smog-sense.vercel.app/</a>)...`;
+    },
     experience: () => `
 <span class="text-highlight">💼 Experience & Leadership Highlights:</span>
-  • <strong>Instructor</strong> @ RISE (Present) : Mentoring students in digital problem-solving and algorithmic logic.
-  • <strong>Mobile & Frontend Developer</strong> @ Fiverr (2023 – 2025 · 2 yrs 1 mo) : Flutter apps, JWT Auth, REST APIs & modern web UI.
-  • <strong>Freelance Developer</strong> @ Upwork (Jul 2023 – 2025 · 1 yr 7 mos) : Full-stack mobile and web client solutions.
+  • <strong>Instructor</strong> @ RISE (Jul 2025 – Present) : Mentoring small cohorts of 11-15 students in core computer science, algorithmic logic, and web development.
+  • <strong>President</strong> @ BNU SciTech Society (May 2025 – Jun 2026) : Led university-wide STEM symposiums, technical hackathons, and cross-departmental coding initiatives.
+  • <strong>Teaching Assistant</strong> @ BNU (Sep 2024 – May 2025) : DBMS, ADBMS & AI tutorial instruction and lab mentoring for 60+ undergraduate engineers.
   • <strong>Frontend Developer</strong> @ Bytecode Technologies Pvt. Ltd. (2023 – 2024) : Frontend engineering & component systems.
-  • <strong>President</strong> @ BNU SciTech Society (2025 – 2026) : Leading university-wide hackathons and workshops.
-  • <strong>Teaching Assistant</strong> @ BNU (2024 – 2025) : DBMS, ADBMS & AI tutorial instruction for 60+ undergraduates.
-  • <strong>Social Media Manager</strong> @ Upwork (2021 – 2022) : Digital strategy & project communication management.
-  • <strong>BS in Computer Science</strong> @ Beaconhouse National University (2022 – 2026).
+  • <strong>Freelance Developer & Digital Specialist</strong> (Mar 2021 – Present) : Delivered frontend, full-stack, and Flutter client solutions via Fiverr, Upwork, and direct clients; maintained and troubleshot Shopify-based client store websites and managed client Instagram and Facebook accounts (content planning, posting, audience engagement).
+  • <strong>BS in Computer Science</strong> @ Beaconhouse National University (Sep 2022 – Jun 2026).
     `,
     contact: () => `
 <span class="text-highlight">📬 Direct Contact Coordinates:</span>
@@ -518,7 +557,7 @@ Available Commands:
     },
     "eval-rag": () => {
       runRagSimulation();
-      return `⚡ Initializing Clinical RAG Dual-Layer Validation Benchmark...`;
+      return `⚡ Initializing Clinical RAG Dual-Layer Validation Benchmark (Demo Simulation)...`;
     }
   };
 
@@ -586,7 +625,7 @@ Available Commands:
     setTimeout(() => {
       out.innerHTML += `
         <div style="color: #f1f0ea; font-weight: 700; margin-top: 6px;">
-          [4/4] ✅ Benchmark Complete: 100% Evaluation Accuracy (25/25 queries validated without hallucination).
+          [4/4] ✅ Demo Simulation Complete: 25/25 on a 25-question eval set across five medical categories. Dual-layer hallucination mitigation applied.
         </div>
       `;
       body.scrollTop = body.scrollHeight;
@@ -625,7 +664,7 @@ const projectDetails = {
     content: `
       <div class="modal-project-deepdive">
         <div class="project-stat-strip">
-          <div class="p-stat"><strong>Accuracy</strong>: 100% (25 Clinical Scenarios)</div>
+          <div class="p-stat"><strong>Validation</strong>: 25/25 Clinical Eval Set</div>
           <div class="p-stat"><strong>Vector DB</strong>: ChromaDB</div>
           <div class="p-stat"><strong>Deployment</strong>: Vercel Live App</div>
         </div>
@@ -643,12 +682,49 @@ const projectDetails = {
           <li>Constructed a robust Retrieval-Augmented Generation (RAG) pipeline ingesting clinical literature into ChromaDB vector embeddings.</li>
           <li>Engineered a proprietary dual-layer verification protocol: first filtering retrieved chunks by semantic threshold, followed by an LLM relevance validator.</li>
           <li>Exposed high-throughput endpoints via FastAPI for seamless integration into hospital and research workflows.</li>
+          <li><strong>Evaluation Benchmark:</strong> 25/25 on a 25-question eval set across five medical categories. Known limitation: can still overfit on some responses.</li>
         </ul>
         <div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px;">
           <a href="https://medassist-rag-two.vercel.app/" target="_blank" class="btn btn-primary-sm">
             <i data-lucide="play-circle"></i> Launch Live Web App
           </a>
-          <a href="https://github.com/noor-bibi-bi" target="_blank" class="btn btn-glass-sm">
+          <a href="https://github.com/noor-bibi-bi/medassist-rag" target="_blank" class="btn btn-glass-sm">
+            <i data-lucide="github"></i> View GitHub Repository
+          </a>
+        </div>
+      </div>
+    `
+  },
+  smogsense: {
+    title: "SmogSense – AI Air Quality Forecasting for Lahore",
+    subtitle: "FastAPI • XGBoost Dual Ensemble • OpenAQ API • Open-Meteo • Vercel",
+    content: `
+      <div class="modal-project-deepdive">
+        <div class="project-stat-strip">
+          <div class="p-stat"><strong>Model</strong>: XGBoost Dual Engine</div>
+          <div class="p-stat"><strong>Forecasting</strong>: 7-Day Trend + Recess Advisory</div>
+          <div class="p-stat"><strong>Deployment</strong>: Vercel Live App</div>
+        </div>
+        <h4 style="margin: 18px 0 8px 0; color: var(--text-main);">Live Interactive Demo</h4>
+        <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 14px;">
+          Explore air quality forecasts and school advisories for Lahore:
+          <a href="https://smog-sense.vercel.app/" target="_blank" style="color: #e26d5c; font-weight: 600; text-decoration: underline;">https://smog-sense.vercel.app/</a>
+        </p>
+        <h4 style="margin: 18px 0 8px 0; color: var(--text-main);">Problem Statement</h4>
+        <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.65;">
+          Lahore endures severe hazardous winter smog spikes. Citizens and educational institutions need dependable, hyperlocal forecasts to safeguard children and make proactive outdoor activity decisions.
+        </p>
+        <h4 style="margin: 18px 0 8px 0; color: var(--text-main);">Architecture & Engineering Solution</h4>
+        <ul style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.7; padding-left: 20px;">
+          <li>Engineered a dual XGBoost architecture: a classifier for school outdoor recess advisories and a regressor predicting 7-day PM2.5 trends.</li>
+          <li>Integrated environmental sensor data from OpenAQ API (sensor 7466365) combined with meteorological inputs from Open-Meteo.</li>
+          <li>Built an asynchronous FastAPI backend and responsive web interface deployed seamlessly on Vercel.</li>
+        </ul>
+        <div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px;">
+          <a href="https://smog-sense.vercel.app/" target="_blank" class="btn btn-primary-sm">
+            <i data-lucide="play-circle"></i> Launch Live Web App
+          </a>
+          <a href="https://github.com/noor-bibi-bi/SmogSense" target="_blank" class="btn btn-glass-sm">
             <i data-lucide="github"></i> View GitHub Repository
           </a>
         </div>
@@ -675,11 +751,9 @@ const projectDetails = {
           <li>Designed a cross-platform Flutter application featuring intuitive camera capture, dynamic color palette generators, and wardrobe organization.</li>
           <li>Engineered a FastAPI backend providing wardrobe matching algorithms, outfit planning, and personalized recommendation feeds.</li>
         </ul>
-        <div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px;">
-          <a href="https://github.com/noor-bibi-bi" target="_blank" class="btn btn-primary-sm">
-            <i data-lucide="github"></i> View GitHub Repository
-          </a>
-        </div>
+        <p style="margin-top: 20px; color: var(--text-muted); font-size: 0.88rem; font-style: italic;">
+          Proprietary codebase — demo video walkthrough and application screenshots coming soon.
+        </p>
       </div>
     `
   },
@@ -701,10 +775,10 @@ const projectDetails = {
         <ul style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.7; padding-left: 20px;">
           <li>Architected a scalable three-tier microservices platform using Express and PostgreSQL.</li>
           <li>Constructed GitHub Actions workflows integrating unit testing, automated security scans, Docker container packaging, and Kubernetes deployment.</li>
-          <li>Implemented secure container configurations and Nginx reverse proxy routing for resilient production reliability.</li>
+          <li>Implemented secure container configurations and Nginx reverse proxy routing for resilient deployment reliability.</li>
         </ul>
         <div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px;">
-          <a href="https://github.com/noor-bibi-bi" target="_blank" class="btn btn-primary-sm">
+          <a href="https://github.com/noor-bibi-bi/devopsflow-Project" target="_blank" class="btn btn-primary-sm">
             <i data-lucide="github"></i> View GitHub Repository
           </a>
         </div>
@@ -762,8 +836,7 @@ function initResumeModal() {
   const modal = document.getElementById('resume-modal');
   const openBtns = [
     document.getElementById('open-resume-btn'),
-    document.getElementById('mobile-resume-btn'),
-    document.getElementById('hero-cv-btn')
+    document.getElementById('mobile-resume-btn')
   ].filter(Boolean);
   const closeBtn = document.getElementById('close-resume-modal');
 
@@ -950,7 +1023,7 @@ function initAutomatedContactForm() {
       submitBtn.disabled = true;
       submitBtn.style.opacity = '0.7';
     }
-    if (submitText) submitText.textContent = 'Dispatching to noorbibi803@gmail.com...';
+    if (submitText) submitText.textContent = 'Sending to noorbibi803@gmail.com...';
 
     try {
       const response = await fetch('https://formsubmit.co/ajax/noorbibi803@gmail.com', {
@@ -973,7 +1046,7 @@ function initAutomatedContactForm() {
         form.reset();
         if (feedback) {
           feedback.className = 'form-feedback success';
-          feedback.textContent = '✓ Message dispatched successfully to noorbibi803@gmail.com! Noor will reply within 24 hours.';
+          feedback.textContent = '✓ Message sent successfully to noorbibi803@gmail.com! Thank you for reaching out.';
         }
         showToast('✓ Message sent directly to noorbibi803@gmail.com!');
         triggerConfetti();
@@ -986,7 +1059,7 @@ function initAutomatedContactForm() {
 
       if (feedback) {
         feedback.className = 'form-feedback success';
-        feedback.textContent = '✓ Dispatched via email client to noorbibi803@gmail.com.';
+        feedback.textContent = '✓ Opened email client for direct sending to noorbibi803@gmail.com.';
       }
       showToast('Opening email client for noorbibi803@gmail.com...');
       triggerConfetti();
@@ -995,7 +1068,7 @@ function initAutomatedContactForm() {
         submitBtn.disabled = false;
         submitBtn.style.opacity = '1';
       }
-      if (submitText) submitText.textContent = 'Dispatch Message Now';
+      if (submitText) submitText.textContent = 'Send Message';
     }
   });
 }
