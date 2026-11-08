@@ -129,6 +129,9 @@ let threeSceneState = {
 };
 
 function initThreeJsHero() {
+  if (window.innerWidth < 768 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
   const canvas = document.getElementById('hero-canvas');
   if (!canvas || !window.THREE) return;
 
@@ -408,7 +411,7 @@ function initScrollReveal() {
   const revealElements = document.querySelectorAll('.reveal-on-scroll, .section-tight, .dual-marquee-container');
 
   const observerOptions = {
-    threshold: 0.12,
+    threshold: 0.02,
     rootMargin: '0px 0px -50px 0px'
   };
 
@@ -496,10 +499,10 @@ Available Commands:
     `,
     skills: () => `
 <span class="text-highlight">⚡ Technical Competencies & Ecosystem:</span>
-  • <strong>AI / ML:</strong> RAG, Large Language Models (LLMs), XGBoost, Computer Vision (12-season classifier), NLP, ChromaDB
-  • <strong>Full Stack & Mobile:</strong> Python (FastAPI, Flask, Django), Flutter, Dart, RESTful APIs, Node.js, Express.js, React.js, Next.js
-  • <strong>Databases & Cloud:</strong> PostgreSQL, MySQL, ChromaDB, SQLAlchemy, Vercel, Firebase
-  • <strong>DevOps & Tools:</strong> Docker, Kubernetes, GitHub Actions CI/CD, Nginx, Linux, Git, JWT, OAuth 2.0
+  • <strong>AI / ML:</strong> RAG, Large Language Models (LLMs), XGBoost, Computer Vision (12-season classifier), ChromaDB
+  • <strong>Full Stack & Mobile:</strong> Python (FastAPI), Flutter, Dart, RESTful APIs, Node.js, Express.js, React.js, Next.js
+  • <strong>Databases & Cloud:</strong> PostgreSQL, ChromaDB, SQLAlchemy, Vercel
+  • <strong>DevOps & Tools:</strong> Docker, Kubernetes, GitHub Actions CI/CD, Git, JWT
     `,
     projects: () => `
 <span class="text-highlight">🚀 Featured Engineering Systems:</span>
@@ -680,8 +683,8 @@ const projectDetails = {
         <h4 style="margin: 18px 0 8px 0; color: var(--text-main);">Architecture & Engineering Solution</h4>
         <ul style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.7; padding-left: 20px;">
           <li>Constructed a robust Retrieval-Augmented Generation (RAG) pipeline ingesting clinical literature into ChromaDB vector embeddings.</li>
-          <li>Engineered a proprietary dual-layer verification protocol: first filtering retrieved chunks by semantic threshold, followed by an LLM relevance validator.</li>
-          <li>Exposed high-throughput endpoints via FastAPI for seamless integration into hospital and research workflows.</li>
+          <li>Engineered a dual-layer verification protocol: first filtering retrieved chunks by semantic threshold, followed by an LLM relevance validator.</li>
+          <li>Exposed endpoints via FastAPI for seamless integration into clinical workflows.</li>
           <li><strong>Evaluation Benchmark:</strong> 25/25 on a 25-question eval set across five medical categories. Known limitation: can still overfit on some responses.</li>
         </ul>
         <div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px;">
@@ -689,7 +692,9 @@ const projectDetails = {
             <i data-lucide="play-circle"></i> Launch Live Web App
           </a>
           <a href="https://github.com/noor-bibi-bi/medassist-rag" target="_blank" class="btn btn-glass-sm">
-            <i data-lucide="github"></i> View GitHub Repository
+            <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg> View GitHub Repository
           </a>
         </div>
       </div>
@@ -725,7 +730,9 @@ const projectDetails = {
             <i data-lucide="play-circle"></i> Launch Live Web App
           </a>
           <a href="https://github.com/noor-bibi-bi/SmogSense" target="_blank" class="btn btn-glass-sm">
-            <i data-lucide="github"></i> View GitHub Repository
+            <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg> View GitHub Repository
           </a>
         </div>
       </div>
@@ -751,9 +758,6 @@ const projectDetails = {
           <li>Designed a cross-platform Flutter application featuring intuitive camera capture, dynamic color palette generators, and wardrobe organization.</li>
           <li>Engineered a FastAPI backend providing wardrobe matching algorithms, outfit planning, and personalized recommendation feeds.</li>
         </ul>
-        <p style="margin-top: 20px; color: var(--text-muted); font-size: 0.88rem; font-style: italic;">
-          Proprietary codebase — demo video walkthrough and application screenshots coming soon.
-        </p>
       </div>
     `
   },
@@ -769,17 +773,19 @@ const projectDetails = {
         </div>
         <h4 style="margin: 18px 0 8px 0; color: var(--text-main);">Problem Statement</h4>
         <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.65;">
-          Modern cloud applications require automated, zero-downtime deployment pipelines with built-in vulnerability scanning to accelerate release cycles safely.
+          Modern cloud applications require automated deployment pipelines with built-in vulnerability scanning to accelerate release cycles safely.
         </p>
         <h4 style="margin: 18px 0 8px 0; color: var(--text-main);">Architecture & Engineering Solution</h4>
         <ul style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.7; padding-left: 20px;">
           <li>Architected a scalable three-tier microservices platform using Express and PostgreSQL.</li>
           <li>Constructed GitHub Actions workflows integrating unit testing, automated security scans, Docker container packaging, and Kubernetes deployment.</li>
-          <li>Implemented secure container configurations and Nginx reverse proxy routing for resilient deployment reliability.</li>
+          <li>Implemented secure container configurations and reverse proxy routing for resilient deployment reliability.</li>
         </ul>
         <div style="margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px;">
           <a href="https://github.com/noor-bibi-bi/devopsflow-Project" target="_blank" class="btn btn-primary-sm">
-            <i data-lucide="github"></i> View GitHub Repository
+            <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg> View GitHub Repository
           </a>
         </div>
       </div>
